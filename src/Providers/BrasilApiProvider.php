@@ -1,10 +1,10 @@
 <?php
 
-namespace Moca\FallbackCepApi\Providers;
+namespace Kamoca\FallbackCepApi\Providers;
 
 use Exception;
 use Illuminate\Support\Facades\Http;
-use Moca\FallbackCepApi\Contracts\CepProviderContract;
+use Kamoca\FallbackCepApi\Contracts\CepProviderContract;
 use RuntimeException;
 
 class BrasilApiProvider extends BaseCepProvider implements CepProviderContract

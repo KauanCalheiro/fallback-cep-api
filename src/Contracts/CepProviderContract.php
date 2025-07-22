@@ -1,6 +1,6 @@
 <?php
 
-namespace Moca\FallbackCepApi\Contracts;
+namespace Kamoca\FallbackCepApi\Contracts;
 
 interface CepProviderContract
 {

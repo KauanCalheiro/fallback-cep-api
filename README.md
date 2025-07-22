@@ -1,4 +1,4 @@
-# 📍 Moca/FallbackCepApi
+# 📍 Kamoca/FallbackCepApi
 
 Um pacote Laravel robusto e confiável para consulta de CEP com **fallback automático** entre múltiplos provedores de API. Nunca mais perca uma consulta por falha de API! 🚀
 
@@ -21,7 +21,7 @@ Um pacote Laravel robusto e confiável para consulta de CEP com **fallback autom
 Instale o pacote via Composer:
 
 ```bash
-composer require moca/fallback-cep-api
+composer require kamoca/fallback-cep-api
 ```
 
 ### Publicar Configuração
@@ -113,7 +113,7 @@ FALLBACK_CEP_API_PLACEHOLDER="{{cep}}"
 
 namespace App\Http\Controllers;
 
-use Moca\FallbackCepApi\CepResolver;
+use Kamoca\FallbackCepApi\CepResolver;
 
 class AddressController extends Controller
 {
@@ -141,7 +141,7 @@ class AddressController extends Controller
 ```php
 <?php
 
-use Moca\FallbackCepApi\CepResolver;
+use Kamoca\FallbackCepApi\CepResolver;
 
 // Resolvendo via container
 $cepResolver = app(CepResolver::class);
@@ -159,7 +159,7 @@ $address = $cepResolver->resolve('01310-100');
 
 namespace App\Services;
 
-use Moca\FallbackCepApi\CepResolver;
+use Kamoca\FallbackCepApi\CepResolver;
 
 class AddressService
 {
