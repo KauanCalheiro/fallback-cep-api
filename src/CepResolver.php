@@ -39,7 +39,7 @@ class CepResolver
         }
 
         throw new Exception(__(
-            'fallback-cep-api.error.runtime.all_failed',
+            'fallback-cep.error.runtime.all_failed',
             ['cep' => $cep]
         ));
     }

@@ -9,14 +9,14 @@ use RuntimeException;
 
 class BrasilApiProvider extends BaseCepProvider implements CepProviderContract
 {
-    public function resolve(string $cpf): array
+    public function resolve(string $cep): array
     {
-        $response = Http::get($this->build($cpf));
+        $response = Http::get($this->build($cep));
 
         if ($response->failed()) {
             throw new RuntimeException(
-                __('fallback-cep-api.error.runtime.request_failed', [
-                    'cep' => $cpf,
+                __('fallback-cep.error.runtime.request_failed', [
+                    'cep' => $cep,
                     'provider' => 'BrasilApi',
                     'error' => $response->body(),
                 ])

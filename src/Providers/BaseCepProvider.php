@@ -20,7 +20,7 @@ abstract class BaseCepProvider implements CepProviderContract
 
     protected function build(string $cep): string
     {
-        return str_replace(config('cep.placeholder'), $cep, $this->templateUrl);
+        return str_replace(\Illuminate\Support\Facades\Config::get('cep.placeholder'), $cep, $this->templateUrl);
     }
 
     public function validate(array $data): void
@@ -35,8 +35,8 @@ abstract class BaseCepProvider implements CepProviderContract
 
         foreach ($requiredKeys as $key) {
             if (! array_key_exists($key, $data)) {
-                throw new InvalidArgumentException(__(
-                    'fallback-cep-api.validation.missing_key',
+                throw new InvalidArgumentException(\__(
+                    'fallback-cep.error.validation.missing_key',
                     ['key' => $key]
                 ));
             }

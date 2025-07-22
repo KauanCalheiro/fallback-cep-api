@@ -15,7 +15,7 @@ class ViaCepProvider extends BaseCepProvider implements CepProviderContract
 
         if ($response->failed()) {
             throw new RuntimeException(
-                __('fallback-cep-api.error.runtime.request_failed', [
+                __('fallback-cep.error.runtime.request_failed', [
                     'cep' => $cep,
                     'provider' => 'ViaCep',
                     'error' => $response->body(),
