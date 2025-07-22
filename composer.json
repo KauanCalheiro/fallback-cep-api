@@ -1,0 +1,36 @@
+{
+    "name": "kamoca/fallback-cep-api",
+    "description": "Fallback de chamadas para múltiplas APIs de CEP",
+    "type": "library",
+    "keywords": [
+        "cep",
+        "api",
+        "fallback",
+        "laravel"
+    ],
+    "authors": [
+        {
+            "name": "Kauan Morinel Calheiro",
+            "email": "kauan.calheiro@universo.univates.br"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^12.20"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kamoca\\FallbackCepApi\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kamoca\\FallbackCepApi\\FallbackCepApiServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
