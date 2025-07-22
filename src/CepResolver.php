@@ -3,8 +3,6 @@
 namespace Kamoca\FallbackCepApi;
 
 use Exception;
-use Kamoca\FallbackCepApi\Providers\BrasilApiProvider;
-use Kamoca\FallbackCepApi\Providers\ViaCepProvider;
 
 class CepResolver
 {
@@ -19,12 +17,8 @@ class CepResolver
             ->filter(fn ($config) => $config['enabled'] ?? false)
             ->sortBy(fn ($config) => $config['priority'] ?? 99);
 
-        foreach ($providers as $providerName => $config) {
-            $providerClass = match ($providerName) {
-                'via_cep' => ViaCepProvider::class,
-                'brasil_api' => BrasilApiProvider::class,
-                default => null,
-            };
+        foreach ($providers as $config) {
+            $providerClass = $config['class'] ?? null;
 
             if ($providerClass && class_exists($providerClass)) {
                 $provider = new $providerClass($config);

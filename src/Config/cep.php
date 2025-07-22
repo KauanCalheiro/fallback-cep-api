@@ -29,6 +29,7 @@ return [
             'priority' => (int) env('FALLBACK_CEP_API_VIA_CEP_PRIORITY', 1),
             'url_template' => env('FALLBACK_CEP_API_VIA_CEP_BASE_URL', "https://viacep.com.br/ws/{$placeholder}/json/"),
             'token' => null,
+            'class' => \Kamoca\FallbackCepApi\Providers\ViaCepProvider::class,
         ],
 
         'brasil_api' => [
@@ -36,6 +37,7 @@ return [
             'priority' => (int) env('FALLBACK_CEP_API_BRASIL_API_PRIORITY', 2),
             'url_template' => env('FALLBACK_CEP_API_BRASIL_API_BASE_URL', "https://brasilapi.com.br/api/cep/v1/{$placeholder}"),
             'token' => null,
+            'class' => \Kamoca\FallbackCepApi\Providers\BrasilApiProvider::class,
         ],
     ],
 
