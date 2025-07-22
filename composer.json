@@ -1,5 +1,5 @@
 {
-    "name": "kamoca/fallback-cep-api",
+    "name": "moca/fallback-cep-api",
     "description": "Fallback de chamadas para múltiplas APIs de CEP",
     "type": "library",
     "keywords": [
@@ -21,13 +21,13 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Kamoca\\FallbackCepApi\\": "src/"
+            "Moca\\FallbackCepApi\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Kamoca\\FallbackCepApi\\FallbackCepApiServiceProvider"
+                "Moca\\FallbackCepApi\\FallbackCepApiServiceProvider"
             ]
         }
     },

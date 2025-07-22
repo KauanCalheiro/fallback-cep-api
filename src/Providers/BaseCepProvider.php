@@ -1,9 +1,9 @@
 <?php
 
-namespace Kamoca\FallbackCepApi\Providers;
+namespace Moca\FallbackCepApi\Providers;
 
 use InvalidArgumentException;
-use Kamoca\FallbackCepApi\Contracts\CepProviderContract;
+use Moca\FallbackCepApi\Contracts\CepProviderContract;
 
 abstract class BaseCepProvider implements CepProviderContract
 {

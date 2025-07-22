@@ -1,6 +1,6 @@
 <?php
 
-namespace Kamoca\FallbackCepApi;
+namespace Moca\FallbackCepApi;
 
 use Illuminate\Support\ServiceProvider;
 use function config_path;

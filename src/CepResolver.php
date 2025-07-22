@@ -1,15 +1,15 @@
 <?php
 
-namespace Kamoca\FallbackCepApi;
+namespace Moca\FallbackCepApi;
 
 use Exception;
-use Kamoca\FallbackCepApi\Providers\BrasilApiProvider;
-use Kamoca\FallbackCepApi\Providers\ViaCepProvider;
+use Moca\FallbackCepApi\Providers\BrasilApiProvider;
+use Moca\FallbackCepApi\Providers\ViaCepProvider;
 
 class CepResolver
 {
     /**
-     * @var \Kamoca\FallbackCepApi\Providers\BaseCepProvider[]
+     * @var \Moca\FallbackCepApi\Providers\BaseCepProvider[]
      */
     protected array $providers = [];
 
