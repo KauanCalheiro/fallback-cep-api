@@ -6,12 +6,21 @@ use Exception;
 use Illuminate\Support\Facades\Http;
 use Kamoca\FallbackCepApi\Contracts\CepProviderContract;
 use RuntimeException;
+use Str;
 
-class ViaCepProvider extends BaseCepProvider implements CepProviderContract
+class ViaCepProvider extends BaseCepProvider
 {
+    private const BASE_URL = 'https://viacep.com.br/ws/%s/json/';
+
     public function resolve(string $cep): array
     {
-        $response = Http::get($this->build($cep));
+        throw new RuntimeException(
+            __('fallback-cep.error.runtime.provider_not_implemented', [
+                'provider' => 'ViaCep',
+                'message' => 'The ViaCepProvider is not implemented yet.',
+            ])
+        );
+        $response = Http::get(sprintf(self::BASE_URL, $cep));
 
         if ($response->failed()) {
             throw new RuntimeException(
@@ -23,11 +32,7 @@ class ViaCepProvider extends BaseCepProvider implements CepProviderContract
             );
         }
 
-        $data = $this->transform($response->json());
-
-        $this->validate($data);
-
-        return $data;
+        return $response->json();
     }
 
     public function transform(array $data): array

@@ -2,16 +2,16 @@
 
 namespace Kamoca\FallbackCepApi\Providers;
 
-use Exception;
 use Illuminate\Support\Facades\Http;
-use Kamoca\FallbackCepApi\Contracts\CepProviderContract;
 use RuntimeException;
 
-class BrasilApiProvider extends BaseCepProvider implements CepProviderContract
+class BrasilApiProvider extends BaseCepProvider
 {
+    private const BASE_URL = 'https://brasilapi.com.br/api/cep/v2/%s';
+
     public function resolve(string $cep): array
     {
-        $response = Http::get($this->build($cep));
+        $response = Http::get(sprintf(self::BASE_URL, $cep));
 
         if ($response->failed()) {
             throw new RuntimeException(
@@ -23,11 +23,7 @@ class BrasilApiProvider extends BaseCepProvider implements CepProviderContract
             );
         }
 
-        $data = $this->transform($response->json());
-
-        $this->validate($data);
-
-        return $data;
+        return $response->json();
     }
 
     public function transform(array $data): array
