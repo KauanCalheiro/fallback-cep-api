@@ -91,9 +91,6 @@ FALLBACK_CEP_API_VIA_CEP_PRIORITY=1
 # Configurações do BrasilAPI
 FALLBACK_CEP_API_BRASIL_API_ENABLED=true
 FALLBACK_CEP_API_BRASIL_API_PRIORITY=2
-
-# Placeholder personalizado (opcional)
-FALLBACK_CEP_API_PLACEHOLDER="{{cep}}"
 ```
 
 ## 🔧 Como Usar
@@ -104,6 +101,7 @@ FALLBACK_CEP_API_PLACEHOLDER="{{cep}}"
 <?php
 
 use Kamoca\FallbackCepApi\CepResolver;
+use Kamoca\FallbackCepApi\Facade\Cep;
 
 /** @var CepResolver $cepResolver */
 $cepResolver = app(CepResolver::class);
@@ -112,54 +110,9 @@ $address = $cepResolver->resolve('01310-100');
 /** @var CepResolver $cepResolver */
 $cepResolver = app()->make(CepResolver::class);
 $address = $cepResolver->resolve('01310-100');
-``` 
-
-### Em um Service
-
-```php
-<?php
-
-namespace App\Services;
-
-use Kamoca\FallbackCepApi\CepResolver;
-
-class AddressService
-{
-    public function __construct(
-        private CepResolver $cepResolver
-    ) {}
-
-    public function findAddress(string $cep): array
-    {
-        return $this->cepResolver->resolve($cep);
-    }
-}
-```
-
-### Facade
-
-```php
-<?php
-
-namespace App\Facades;
-
-use Illuminate\Support\Facades\Facade;
-use Kamoca\FallbackCepApi\CepResolver;
-
-class Cep extends Facade
-{
-    protected static function getFacadeAccessor()
-    {
-        return CepResolver::class;
-    }
-}
-```
-
-```php
-use App\Facades\Cep;
 
 $address = Cep::resolve('01310-100');
-```
+``` 
 
 ## 🌍 Internacionalização
 
@@ -204,7 +157,6 @@ __(
 
 ```
 CepResolver (Classe principal)
-├── CepProviderContract (Interface)
 ├── BaseCepProvider (Classe base)
 ├── ViaCepProvider (Implementação específica)
 └── BrasilApiProvider (Implementação específica)
@@ -252,8 +204,6 @@ class NovoProvider extends BaseCepProvider implements CepProviderContract
     'novo_provider' => [
         'enabled' => env('FALLBACK_CEP_API_NOVO_ENABLED', true),
         'priority' => (int) env('FALLBACK_CEP_API_NOVO_PRIORITY', 3),
-        'url_template' => env('FALLBACK_CEP_API_NOVO_BASE_URL', "https://api.novo.com/cep/{$placeholder}"),
-        'token' => env('FALLBACK_CEP_API_NOVO_TOKEN'),
         'class' => \Kamoca\FallbackCepApi\Providers\NovoProvider::class,
     ],
 ],
@@ -264,8 +214,6 @@ class NovoProvider extends BaseCepProvider implements CepProviderContract
 ```env
 FALLBACK_CEP_API_NOVO_ENABLED=true
 FALLBACK_CEP_API_NOVO_PRIORITY=3
-FALLBACK_CEP_API_NOVO_BASE_URL="https://api.novo.com/cep/{$placeholder}"
-FALLBACK_CEP_API_NOVO_TOKEN=seu_token_aqui
 ```
 
 ## 🧪 Testes
