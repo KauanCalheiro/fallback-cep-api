@@ -2,11 +2,8 @@
 
 namespace Kamoca\FallbackCepApi\Providers;
 
-use Exception;
 use Illuminate\Support\Facades\Http;
-use Kamoca\FallbackCepApi\Contracts\CepProviderContract;
 use RuntimeException;
-use Str;
 
 class ViaCepProvider extends BaseCepProvider
 {
@@ -14,12 +11,6 @@ class ViaCepProvider extends BaseCepProvider
 
     public function resolve(string $cep): array
     {
-        throw new RuntimeException(
-            __('fallback-cep.error.runtime.provider_not_implemented', [
-                'provider' => 'ViaCep',
-                'message' => 'The ViaCepProvider is not implemented yet.',
-            ])
-        );
         $response = Http::get(sprintf(self::BASE_URL, $cep));
 
         if ($response->failed()) {
