@@ -24,10 +24,10 @@ class FallbackCepApiServiceProvider extends ServiceProvider
         ], 'cep-config');
 
 
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'fallback-cep');
+        $this->loadTranslationsFrom(__DIR__ . '/resources/lang', 'fallback-cep');
 
         $this->publishes([
-            __DIR__ . '/../resources/lang' => resource_path('lang/vendor/fallback-cep'),
+            __DIR__ . '/resources/lang' => resource_path('lang/vendor/fallback-cep'),
         ], 'fallback-cep-translations');
     }
 }
