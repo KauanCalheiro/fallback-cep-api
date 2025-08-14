@@ -28,7 +28,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/support": "^12.20"
+        "illuminate/support": "^12.0"
     },
     "license": "MIT",
     "autoload": {
